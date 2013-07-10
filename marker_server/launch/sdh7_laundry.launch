@@ -1,0 +1,7 @@
+<launch>
+    <node pkg="marker_server" name="sdh7_laundry_marker_server" type="track_markers.py" output="screen">
+        <param name="marker_topic" type="string" value="marker_detector" />
+        <param name="tracker_frame" type="string" value="map" />
+        <param name="marker_file" type="string" value="$(find marker_server)/data/sdh7_laundry_markers.yaml" />
+    </node>
+</launch>

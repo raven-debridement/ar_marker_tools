@@ -1,0 +1,17 @@
+<package>
+  <description brief="marker_print">
+
+     marker_print
+
+  </description>
+  <author>Ziang Xie</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/marker_print</url>
+
+  <depend package="rospy" />
+  <depend package="opencv2" />
+
+</package>
+
+

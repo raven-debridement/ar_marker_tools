@@ -1,0 +1,19 @@
+<package>
+  <description brief="marker_server">
+
+     marker_server
+
+  </description>
+  <author>Ziang Xie</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/marker_server</url>
+
+  <depend package="rospy" />
+  <depend package="tf" />
+  <depend package="marker_detect" />
+  <depend package="geometry_msgs" />
+
+</package>
+
+

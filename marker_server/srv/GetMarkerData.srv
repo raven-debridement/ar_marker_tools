@@ -1,0 +1,7 @@
+uint16[] ids
+---
+#TODO add more associated data
+Header header
+string[] names
+uint16[] ids
+geometry_msgs/Pose[] poses

@@ -1,0 +1,9 @@
+string detector_service
+# all in degrees
+int8 start_pan
+int8 end_pan
+int8 start_tilt
+int8 end_tilt
+int8 angle_step
+---
+marker_detect/MarkerInfos marker_infos

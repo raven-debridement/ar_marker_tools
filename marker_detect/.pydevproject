@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse-pydev version="1.0"?>
+
+<pydev_project>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.6</pydev_property>
+<pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
+<path>/home/benk/ros_workspace/artoolkitplus/src</path>
+<path>/opt/ros/fuerte/stacks/geometry/eigen_conversions/src</path>
+<path>/opt/ros/fuerte/stacks/geometry/eigen_conversions/lib</path>
+<path>/opt/ros/fuerte/stacks/geometry/tf/src</path>
+<path>/opt/ros/fuerte/stacks/geometry/tf/lib</path>
+<path>/opt/ros/fuerte/stacks/vision_opencv/image_geometry/src</path>
+<path>/opt/ros/fuerte/stacks/vision_opencv/image_geometry/lib</path>
+<path>/opt/ros/fuerte/stacks/image_common/polled_camera/src</path>
+<path>/opt/ros/fuerte/stacks/image_common/polled_camera/lib</path>
+<path>/opt/ros/fuerte/stacks/image_common/image_transport/src</path>
+<path>/opt/ros/fuerte/stacks/image_common/image_transport/lib</path>
+<path>/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/src</path>
+<path>/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/lib</path>
+<path>/opt/ros/fuerte/stacks/orocos_kinematics_dynamics/python_orocos_kdl/lib</path>
+<path>/opt/ros/fuerte/stacks/geometry/tf_conversions/src</path>
+<path>/opt/ros/fuerte/stacks/geometry/tf_conversions/lib</path>
+<path>/opt/ros/fuerte/stacks/bullet/src</path>
+<path>/opt/ros/fuerte/stacks/bullet/lib</path>
+<path>/opt/ros/fuerte/stacks/pluginlib/src</path>
+<path>/opt/ros/fuerte/stacks/pluginlib/lib</path>
+<path>/opt/ros/fuerte/stacks/orocos_kinematics_dynamics/orocos_kdl/src</path>
+<path>/home/benk/ros_workspace/ar_marker_tools/marker_detect/src</path>
+<path>/opt/ros/fuerte/share/ros/core/mk</path>
+<path>/usr/local/lib/python2.7/dist-packages/dulwich-0.8.5-py2.7-linux-x86_64.egg</path>
+<path>/usr/local/lib/python2.7/dist-packages/hg_git-0.3.3-py2.7.egg</path>
+<path>/home/benk/ros_workspace/python</path>
+<path>/opt/ros/fuerte/lib/python2.7/dist-packages</path>
+<path>/home/benk/ros_workspace/ar_marker_tools/marker_detect</path>
+<path>/usr/lib/python2.7</path>
+<path>/usr/lib/python2.7/plat-linux2</path>
+<path>/usr/lib/python2.7/lib-tk</path>
+<path>/usr/lib/python2.7/lib-dynload</path>
+<path>/usr/local/lib/python2.7/dist-packages</path>
+<path>/usr/lib/python2.7/dist-packages</path>
+<path>/usr/lib/python2.7/dist-packages/PIL</path>
+<path>/usr/lib/python2.7/dist-packages/gst-0.10</path>
+<path>/usr/lib/python2.7/dist-packages/gtk-2.0</path>
+<path>/usr/lib/pymodules/python2.7</path>
+<path>/usr/lib/python2.7/dist-packages/ubuntu-sso-client</path>
+<path>/usr/lib/python2.7/dist-packages/ubuntuone-client</path>
+<path>/usr/lib/python2.7/dist-packages/ubuntuone-control-panel</path>
+<path>/usr/lib/python2.7/dist-packages/ubuntuone-couch</path>
+<path>/usr/lib/python2.7/dist-packages/ubuntuone-installer</path>
+<path>/usr/lib/python2.7/dist-packages/ubuntuone-storage-protocol</path>
+<path>/usr/lib/python2.7/dist-packages/wx-2.8-gtk2-unicode</path>
+</pydev_pathproperty>
+</pydev_project>

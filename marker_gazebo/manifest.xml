@@ -1,0 +1,17 @@
+<package>
+  <description brief="marker_gazebo">
+
+     A package for generating BCH marker textures for use in Gazebo
+
+  </description>
+  <author>Ibrahim Awwal</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/marker_gazebo</url>
+  <depend package="gazebo"/>
+  <export>
+    <gazebo gazebo_media_path="${prefix}" />
+  </export>
+</package>
+
+

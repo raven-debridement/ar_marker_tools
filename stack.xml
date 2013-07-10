@@ -1,0 +1,10 @@
+<stack>
+  <description brief="ar_marker_tools">ar_marker_tools</description>
+  <author>Maintained by Ziang Xie</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/ar_marker_tools</url>
+  <depend stack="ros" />
+  <depend stack="common" />
+
+</stack>

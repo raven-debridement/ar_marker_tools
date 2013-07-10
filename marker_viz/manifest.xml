@@ -1,0 +1,21 @@
+<package>
+  <description brief="marker_viz">
+
+     marker_viz
+
+  </description>
+  <author>Ziang Xie</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/marker_viz</url>
+
+  <depend package="rospy" />
+  <depend package="visualization_msgs" />
+  <depend package="geometry_msgs" />
+  <depend package="rll_utils" />
+  <depend package="marker_detect" />
+  <depend package="tf" />
+
+</package>
+
+

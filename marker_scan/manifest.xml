@@ -1,0 +1,22 @@
+<package>
+  <description brief="marker_scan">
+
+     marker_scan
+
+  </description>
+  <author>Ziang Xie</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/marker_scan</url>
+
+  <depend package="rospy"/>
+  <depend package="marker_detect"/>
+  <depend package="geometry_msgs"/>
+  <depend package="pr2_controllers_msgs"/>
+  <depend package="actionlib"/>
+  <depend package="sensor_msgs"/>
+  <depend package="brett_pr2"/>
+
+</package>
+
+

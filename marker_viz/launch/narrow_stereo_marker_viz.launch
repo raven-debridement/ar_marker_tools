@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="marker_viz" name="marker_viz_server" type="marker_viz_server.py" output="screen">
+        <param name="marker_topic" type="string" value="stereo_marker_detector" />
+    </node>
+</launch>

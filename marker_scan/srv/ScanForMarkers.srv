@@ -1,0 +1,6 @@
+Header header
+string detector_service
+uint32[] ids
+geometry_msgs/Pose[] poses
+---
+marker_detect/MarkerInfos marker_infos

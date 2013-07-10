@@ -1,0 +1,21 @@
+<package>
+  <description brief="stereo_marker_detect">
+
+     stereo_marker_detect
+
+  </description>
+  <author>Ziang Xie</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/stereo_marker_detect</url>
+
+  <depend package="rospy" />
+  <depend package="tf" />
+  <depend package="geometry_msgs" />
+  <depend package="marker_detect" />
+  <depend package="sensor_msgs" />
+  <depend package="image_geometry" />
+
+</package>
+
+

@@ -1,0 +1,90 @@
+#!/usr/bin/env python
+import roslib
+
+roslib.load_manifest('marker_detect')
+import rospy
+from marker_detect.msg import *
+from geometry_msgs.msg import PoseStamped, PoseArray
+from std_msgs.msg import String
+import tf
+import optparse
+
+class MarkerRepublisher:
+	def __init__(self,marker_topic,individual=False):
+		self.marker_topic = marker_topic
+		self.pose_array_topic = self.marker_topic + '/poses'
+		self.ids_topic = self.pose_array_topic + '/ids'
+		
+		self.ids_pub = rospy.Publisher(self.ids_topic,String)
+		
+		self.pub = rospy.Publisher(self.pose_array_topic,PoseArray)
+		
+		#self.individual_pose_topic_base = self.marker_topic
+		self.individual_pose_topic_base = self.pose_array_topic
+		if individual:
+			self.individual_pubs = {}
+		else:
+			self.individual_pubs = None
+		
+		self.sub = rospy.Subscriber(self.marker_topic,MarkerInfos,self.callback)
+
+	def callback(self,msg):
+		stamp = msg.header.stamp
+		frame_id = msg.header.frame_id
+	
+		parr = PoseArray()
+	
+		parr.header = msg.header
+		parr.poses = msg.poses
+		
+		ids_str = "%f:%s" % (stamp.to_sec(),','.join([str(id_) for id_ in msg.ids]))
+		
+		self.ids_pub.publish(ids_str)
+		self.pub.publish(parr)
+		
+		if self.individual_pubs is not None:
+			for (idx,id_) in enumerate(msg.ids):
+				if not self.individual_pubs.has_key(id_):
+					self.individual_pubs[id_] = rospy.Publisher(self.individual_pose_topic_base + '/' + str(id_),PoseStamped)
+				pose_msg = PoseStamped()
+				pose_msg.header = msg.header
+				pose_msg.pose = msg.poses[idx]
+				self.individual_pubs[id_].publish(pose_msg)
+
+if __name__ == '__main__':
+	rospy.init_node('marker_repub',anonymous=True)
+	
+	usage = \
+"""%prog [options] TOPIC
+  Republish marker poses on TOPIC as a pose array on TOPIC/poses.
+  The ids are published as a string on TOPIC/poses/ids, in the format
+    <timestamp in seconds>:<comma-separated list of ids>"""
+	
+	parser = optparse.OptionParser(usage)
+	
+	parser.add_option('-i','--individual',action='store_true',
+			default=rospy.get_param(rospy.resolve_name('~individual'),False),
+			help='publish each marker\'s pose individually')
+	
+	(options,args) = parser.parse_args(args=rospy.myargv()[1:])
+
+	marker_topic = None
+	if args:
+		marker_topic = args[0]
+	else:
+		_param_name = lambda name: rospy.resolve_name('~' + name.replace('-','_'))
+		_has_param = lambda name: rospy.has_param(_param_name(name))
+		_str_param = lambda name, default: rospy.get_param(_param_name(name),default)
+
+		if _has_param('topic'):
+			marker_topic = _str_param('topic',None)
+	
+	if not marker_topic:
+		parser.error('No topic given!')
+	
+	
+	MarkerRepublisher(marker_topic,individual = options.individual)
+	
+	rospy.loginfo('marker_repub ready')
+	
+	rospy.spin()

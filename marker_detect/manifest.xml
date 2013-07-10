@@ -1,0 +1,33 @@
+<package>
+  <description brief="marker_detect">
+
+     marker_detect
+
+  </description>
+  <author>Christian Bersch</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/marker_detect</url>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
+  <depend package="artoolkitplus"/>
+  <depend package="polled_camera"/>
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="cv_bridge"/>
+  <depend package="std_msgs"/>
+  <depend package="image_transport"/>
+  <depend package="image_geometry"/>
+  <depend package="tf"/>
+  <depend package="tf_conversions"/>
+  <depend package="eigen_conversions"/>
+
+  <depend package="actionlib"/>
+  <depend package="actionlib_msgs"/>
+  <depend package="visualization_msgs"/>
+  <depend package="common_rosdeps" />
+  <rosdep name="eigen" />
+  <rosdep name="opencv2.3" />
+</package>
+
+
