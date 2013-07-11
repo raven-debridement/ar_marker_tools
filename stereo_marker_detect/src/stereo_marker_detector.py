@@ -8,7 +8,7 @@ from marker_detect.msg import MarkerInfos, MarkerXYs
 from sensor_msgs.msg import CameraInfo
 import image_geometry
 import Util
-from visualization_msgs.msg import MarkerArray
+from visualization_msgs.msg import Marker
 
 '''
 Simple package which listens to MarkerInfos messages from two marker detector
@@ -43,8 +43,8 @@ class StereoMarkerDetector(object):
             r_cam_info_topic, output_topic, output_frame, camera_frame):
         self.listener = tf.TransformListener()
 
-        rviz_topic = "stereo_marker_array"
-        self.rviz_pub = rospy.Publisher(rviz_topic, MarkerArray)
+        rviz_topic = "stereo_marker"
+        self.rviz_pub = rospy.Publisher(rviz_topic, Marker)
         
         # get camera infos
         self.l_cam_info = rospy.wait_for_message(l_cam_info_topic, CameraInfo)
@@ -134,15 +134,14 @@ class StereoMarkerDetector(object):
 
         marker_infos = MarkerInfos()
         marker_infos.header.frame_id = self.output_frame
-        rviz_array = MarkerArray()
         for i in range(0, len(ids)):
             marker_infos.ids.append(ids[i])
             p = Pose()
             p.position = pts[i]
             p.orientation = oris[i]
-            rviz_array.markers.append(Util.createRvizMarker(p, self.output_frame))
+            rviz_marker = Util.createRvizMarker(p, self.output_frame, ids[i])
+            self.rviz_pub.publish(rviz_marker)
             marker_infos.poses.append(p)
-        self.rviz_pub.publish(rviz_array)
 
         return marker_infos
 
