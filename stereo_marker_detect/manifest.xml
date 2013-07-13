@@ -15,6 +15,7 @@
   <depend package="marker_detect" />
   <depend package="sensor_msgs" />
   <depend package="image_geometry" />
+  <depend package="ar_pose" />
 
 </package>
 

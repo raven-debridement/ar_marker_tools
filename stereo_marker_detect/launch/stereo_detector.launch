@@ -42,7 +42,7 @@
         <param name="r_marker_xy_topic" type="string" value="r_marker_xys" />
         <param name="l_cam_info_topic" type="string" value="/left/camera_info" />
         <param name="r_cam_info_topic" type="string" value="/right/camera_info" />
-        <param name="output_topic" type="string" value="stereo_marker_detector" />
+        <param name="output_topic" type="string" value="stereo_pose" />
         <param name="output_frame" type="string" value="left_optical_frame" />
     </node>
     

@@ -5,10 +5,12 @@ import rospy
 import tf
 from geometry_msgs.msg import PointStamped, Pose, Quaternion
 from marker_detect.msg import MarkerInfos, MarkerXYs
+from ar_pose.msg import ARMarkers, ARMarker
 from sensor_msgs.msg import CameraInfo
 import image_geometry
 import Util
 from visualization_msgs.msg import Marker
+import tf
 
 '''
 Simple package which listens to MarkerInfos messages from two marker detector
@@ -45,6 +47,8 @@ class StereoMarkerDetector(object):
 
         rviz_topic = "stereo_marker"
         self.rviz_pub = rospy.Publisher(rviz_topic, Marker)
+
+        self.tf_br = tf.TransformBroadcaster()
         
         # get camera infos
         self.l_cam_info = rospy.wait_for_message(l_cam_info_topic, CameraInfo)
@@ -52,9 +56,9 @@ class StereoMarkerDetector(object):
 
         # subscribe to individual marker detectors
         self.l_marker_sub = rospy.Subscriber(l_marker_xy_topic, MarkerXYs,\
-                self.l_marker_cb)
+                self.l_marker_cb, queue_size = 1)
         self.r_marker_sub = rospy.Subscriber(r_marker_xy_topic, MarkerXYs,\
-                self.r_marker_cb)
+                self.r_marker_cb, queue_size = 1)
         
         self.output_topic = output_topic
         self.output_frame = output_frame
@@ -72,7 +76,8 @@ class StereoMarkerDetector(object):
         #        rospy.Time())
         self.locked = False
 
-        self.pub = rospy.Publisher(output_topic, MarkerInfos)
+        #self.pub = rospy.Publisher(output_topic, MarkerInfos)
+        self.pub = rospy.Publisher(output_topic, ARMarkers)
 
     def l_marker_cb(self, marker_xys):
         if self.locked: return
@@ -132,16 +137,36 @@ class StereoMarkerDetector(object):
                 # average pose estimates
                 oris.append(quaternion_avg(ori1, ori2))
 
-        marker_infos = MarkerInfos()
+        now = rospy.Time.now()
+        #marker_infos = MarkerInfos()
+        marker_infos = ARMarkers()
         marker_infos.header.frame_id = self.output_frame
+        marker_infos.header.stamp = now
         for i in range(0, len(ids)):
-            marker_infos.ids.append(ids[i])
             p = Pose()
             p.position = pts[i]
             p.orientation = oris[i]
+
+            # For ARMarkers
+            marker = ARMarker()
+            marker.id = ids[i]
+            marker.pose.pose = p
+            marker.header.frame_id = self.output_frame
+            marker.header.stamp = now
+            marker_infos.markers.append(marker)
+
+            # For MarkerInfos
+            # marker_infos.ids.append(ids[i])
+            # marker_infos.poses.append(p)
+
             rviz_marker = Util.createRvizMarker(p, self.output_frame, ids[i])
             self.rviz_pub.publish(rviz_marker)
-            marker_infos.poses.append(p)
+
+            pos = p.position
+            ori = p.orientation
+            self.tf_br.sendTransform((pos.x, pos.y, pos.z),
+                                     (ori.x, ori.y, ori.z, ori.w), 
+                                     now, "stereo_" + str(ids[i]), self.output_frame)
 
         return marker_infos
 

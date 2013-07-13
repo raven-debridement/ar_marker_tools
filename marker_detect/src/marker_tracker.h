@@ -172,7 +172,7 @@ class MyTrackerROS:public TrackerSingleMarker {
         void initTracker() {
             setPoseEstimator(ARToolKitPlus::POSE_ESTIMATOR_RPP);
 
-            setCvThresholding(true);
+            setCvThresholding(false);
 
             // Use lookup-table undistortion for high-speed
             // Note: LUT only works with images up to 1024x1024 (reason doesn't work w/ Prosilica)

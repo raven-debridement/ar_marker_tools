@@ -167,10 +167,10 @@ class MarkerDetector{
                 }
                 
                 if (!with_history) {
-                    tracker->setImage(ada,false);
+                    tracker->setImage(cv_image,false);
                 }
                 else {
-                    tracker->setImage(ada,true);
+                    tracker->setImage(cv_image,true);
                 }
 
                 vector<int> marker_ids;
